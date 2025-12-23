@@ -4,15 +4,22 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Tue, 23 Dec 2025 18:23:28 -0500</lastBuildDate>
+<lastBuildDate>Tue, 23 Dec 2025 18:32:38 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $55.01 (+0.01, +0.02% vs 1h ago) [18:20 EST]]]></title>
+<title><![CDATA[TQQQ: $54.98 (+0.00, +0.00% vs 1h ago) [18:30 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
-<guid>tqqq-20251223-1820</guid>
-<pubDate>Tue, 23 Dec 2025 18:20:00 -0500</pubDate>
-<description><![CDATA[<div><h2>TQQQ Price Update</h2><p><strong>Price:</strong> $55.01</p><p><strong>Previous Close:</strong> $54.45</p><p><strong>Timestamp (ET):</strong> 2025-12-23 18:20 EST</p></div><br/><small>Published: 18:20 EST</small>]]></description>
+<guid>tqqq-20251223-1830</guid>
+<pubDate>Tue, 23 Dec 2025 18:30:00 -0500</pubDate>
+<description><![CDATA[<div><h2>TQQQ Price Update</h2><p><strong>Price:</strong> $54.98</p><p><strong>Previous Close:</strong> $54.45</p><p><strong>Timestamp (ET):</strong> 2025-12-23 18:30 EST</p></div><br/><small>Published: 18:30 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $54.98 (+0.00, +0.00% vs 1h ago) [18:25 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20251223-1825</guid>
+<pubDate>Tue, 23 Dec 2025 18:25:00 -0500</pubDate>
+<description><![CDATA[<div><h2>TQQQ Price Update</h2><p><strong>Price:</strong> $54.98</p><p><strong>Previous Close:</strong> $54.45</p><p><strong>Timestamp (ET):</strong> 2025-12-23 18:25 EST</p></div><br/><small>Published: 18:25 EST</small>]]></description>
 </item>
 <item>
 <title><![CDATA[TQQQ: $55.00 (-0.01, -0.02% vs 1h ago) [18:15 EST]]]></title>
@@ -349,13 +356,6 @@
 <guid>tqqq-20251223-1415</guid>
 <pubDate>Tue, 23 Dec 2025 14:15:00 -0500</pubDate>
 <description><![CDATA[<div><h2>TQQQ Price Update</h2><p><strong>Price:</strong> $54.86</p><p><strong>Previous Close:</strong> $54.45</p><p><strong>Timestamp (ET):</strong> 2025-12-23 14:15 EST</p></div><br/><small>Published: 14:15 EST</small>]]></description>
-</item>
-<item>
-<title><![CDATA[TQQQ: $54.85 (+0.10, +0.18% vs 1h ago) [14:10 EST]]]></title>
-<link>https://finance.yahoo.com/quote/TQQQ</link>
-<guid>tqqq-20251223-1410</guid>
-<pubDate>Tue, 23 Dec 2025 14:10:00 -0500</pubDate>
-<description><![CDATA[<div><h2>TQQQ Price Update</h2><p><strong>Price:</strong> $54.85</p><p><strong>Previous Close:</strong> $54.45</p><p><strong>Timestamp (ET):</strong> 2025-12-23 14:10 EST</p></div><br/><small>Published: 14:10 EST</small>]]></description>
 </item>
 </channel>
 </rss>
