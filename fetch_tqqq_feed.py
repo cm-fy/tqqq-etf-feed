@@ -45,12 +45,62 @@ EMIT_FALLBACK = os.environ.get('EMIT_FALLBACK', '1').lower() in ('1', 'true', 'y
 def fetch_tqqq_data():
     try:
         t = yf.Ticker(SYMBOL)
-        info = t.info if hasattr(t, 'info') else {}
+        # Prefer get_info() because it includes `marketState`, `preMarketPrice`, and timestamps.
+        try:
+            info = t.get_info()
+        except Exception:
+            info = t.info if hasattr(t, 'info') else {}
+
+        # Candle history is sometimes stale during extended hours; we can supplement with quote fields from `info`.
         hist = t.history(period="2d", interval="1m", prepost=True)
         return info, hist
     except Exception as e:
         print(f"Error fetching data: {e}")
         return {}, pd.DataFrame()
+
+
+def pick_quote_price_and_time(info: dict):
+    """Pick the best available quote price+time from Yahoo quote fields.
+
+    Returns (price, timestamp_utc_seconds, source_key) or (None, None, None).
+    """
+    if not isinstance(info, dict) or not info:
+        return None, None, None
+
+    market_state = info.get('marketState')
+    candidates = []
+
+    # Prefer session-specific fields when marketState suggests them.
+    if market_state == 'PRE':
+        candidates.extend([
+            ('preMarketPrice', 'preMarketTime'),
+            ('regularMarketPrice', 'regularMarketTime'),
+        ])
+    elif market_state == 'POST':
+        candidates.extend([
+            ('postMarketPrice', 'postMarketTime'),
+            ('regularMarketPrice', 'regularMarketTime'),
+        ])
+    else:
+        candidates.extend([
+            ('regularMarketPrice', 'regularMarketTime'),
+            ('preMarketPrice', 'preMarketTime'),
+            ('postMarketPrice', 'postMarketTime'),
+        ])
+
+    for price_key, time_key in candidates:
+        price = info.get(price_key)
+        ts = info.get(time_key)
+        if price is None or ts is None:
+            continue
+        try:
+            price_f = float(price)
+            ts_i = int(ts)
+        except Exception:
+            continue
+        return price_f, ts_i, price_key
+
+    return None, None, None
 
 
 def build_full_window_index(date_et: dt.date):
@@ -82,21 +132,33 @@ def generate_atom_and_rss(info, hist):
     # Prepare price series
     price_series = price_series_from_hist(hist)
 
-    # Resample to 5-minute using last available price in each bucket and forward-fill
-    if not price_series.empty:
-        price_5m = price_series.resample(RESAMPLE_FREQ).last().ffill()
-    else:
-        price_5m = pd.Series(dtype=float)
-
+    # Determine today's window first and then restrict price_series to it
     now_et = dt.datetime.now(ET_ZONE)
     target_date = now_et.date()
     full_index = build_full_window_index(target_date)
 
-    # Reindex price_5m to the full window (index in ET)
-    if not price_5m.empty:
-        price_5m = price_5m.reindex(full_index, method='ffill')
-    else:
-        price_5m = pd.Series([None] * len(full_index), index=full_index)
+    # Discard historic data from previous days so we don't accidentally carry
+    # yesterday's after-hours price into today's pre-market window.
+    try:
+        start_of_window = full_index[0]
+        price_series = price_series[price_series.index >= start_of_window]
+    except Exception:
+        pass
+
+    # If the candle history is stale (common in extended hours), supplement with
+    # the quote snapshot (preMarketPrice/regularMarketPrice) so the feed reflects
+    # the latest available Yahoo quote.
+    quote_price, quote_ts_utc, quote_src = pick_quote_price_and_time(info)
+    if quote_price is not None and quote_ts_utc is not None:
+        try:
+            quote_dt_et = dt.datetime.fromtimestamp(quote_ts_utc, tz=UTC).astimezone(ET_ZONE)
+            if quote_dt_et >= full_index[0]:
+                quote_point = pd.Series([quote_price], index=pd.DatetimeIndex([quote_dt_et]))
+                price_series = pd.concat([price_series, quote_point]).sort_index()
+                # De-duplicate identical timestamps, keeping the latest
+                price_series = price_series[~price_series.index.duplicated(keep='last')]
+        except Exception:
+            pass
 
     # For previous close, attempt to find last close prior to start of window
     previous_close = None
@@ -117,6 +179,24 @@ def generate_atom_and_rss(info, hist):
                         previous_close = prev_vals[numeric_cols[0]].iloc[-1]
     except Exception:
         previous_close = None
+
+    # Resample to 5-minute using last available price in each bucket
+    if not price_series.empty:
+        price_5m = price_series.resample(RESAMPLE_FREQ).last().ffill()
+    else:
+        # If there's no intraday data for today but we have a previous close,
+        # populate the full window with the previous close so pre-market readers
+        # see a sensible price rather than an empty feed.
+        if previous_close is not None:
+            price_5m = pd.Series([previous_close] * len(full_index), index=full_index)
+        else:
+            price_5m = pd.Series(dtype=float)
+
+    # Reindex price_5m to the full window (index in ET)
+    if not price_5m.empty:
+        price_5m = price_5m.reindex(full_index, method='ffill')
+    else:
+        price_5m = pd.Series([None] * len(full_index), index=full_index)
 
     # Build Atom feed
     feed = ET.Element(ET.QName(ATOM_NS, 'feed'))
@@ -247,8 +327,24 @@ def generate_atom_and_rss(info, hist):
             'description': rss_desc
         })
 
-    # Print emitted count for workflow logs
-    print(f"EMIT_FALLBACK={EMIT_FALLBACK}; EMITTED_COUNT={len(emitted)}")
+    # Print emitted count + latest sources for workflow logs
+    try:
+        last_hist_et = None
+        if hist is not None and not hist.empty:
+            hi = hist.copy()
+            if hi.index.tz is None:
+                hi = hi.tz_localize('UTC')
+            last_hist_et = hi.index.max().tz_convert(ET_ZONE)
+        quote_dbg = None
+        if quote_price is not None and quote_ts_utc is not None:
+            quote_dbg = dt.datetime.fromtimestamp(int(quote_ts_utc), tz=UTC).astimezone(ET_ZONE)
+        print(
+            f"EMIT_FALLBACK={EMIT_FALLBACK}; EMITTED_COUNT={len(emitted)}; "
+            f"MARKET_STATE={info.get('marketState')}; "
+            f"LAST_HIST={last_hist_et}; QUOTE_{quote_src}={quote_price} @ {quote_dbg}"
+        )
+    except Exception:
+        print(f"EMIT_FALLBACK={EMIT_FALLBACK}; EMITTED_COUNT={len(emitted)}")
     return feed, rss_items, now_et
 
 
