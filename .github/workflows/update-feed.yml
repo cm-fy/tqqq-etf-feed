@@ -8,7 +8,7 @@ on:
   schedule:
     # Run every 5 minutes, Monday through Friday only
     - cron: '*/5 * * * 1-5'
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
   push:
     branches:
       - main
