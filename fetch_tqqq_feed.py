@@ -164,6 +164,14 @@ def generate_atom_and_rss(info, hist):
     # Precompute a mapping from timestamp to price for quick lookup
     price_lookup = {ts: price_5m.get(ts, None) for ts in full_index}
 
+    # Fallback: if only one or zero emitted items but the full window contains
+    # multiple non-NaN slots (flat market / holiday / pre-market), emit the
+    # last MAX_RSS_ITEMS slots so readers still get a sensible feed.
+    if len(emitted) <= 1:
+        nonempty = [(ts, price_lookup.get(ts)) for ts in full_index if price_lookup.get(ts) is not None and not pd.isna(price_lookup.get(ts))]
+        if len(nonempty) > 1:
+            emitted = nonempty[-MAX_RSS_ITEMS:]
+
     # Build Atom entries and RSS items from emitted list (newest-first in feed)
     for ts, price in reversed(emitted):
         # --- Atom entry (unchanged) ---
