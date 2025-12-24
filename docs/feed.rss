@@ -4,7 +4,11 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
+<<<<<<< HEAD
 <lastBuildDate>Wed, 24 Dec 2025 07:00:11 -0500</lastBuildDate>
+=======
+<lastBuildDate>Wed, 24 Dec 2025 06:57:43 -0500</lastBuildDate>
+>>>>>>> origin/main
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
