@@ -1,5 +1,9 @@
 name: Update TQQQ Feed
 
+concurrency:
+  group: tqqq-feed-update
+  cancel-in-progress: true
+
 on:
   schedule:
     # Run every 5 minutes, Monday through Friday only
@@ -48,6 +52,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Avoid non-fast-forward failures when another run pushed between checkout and commit.
+          git fetch origin
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+
           git add docs/
 
           # Check if there are changes to commit
@@ -55,7 +64,8 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update TQQQ feed - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-            git push
+            # Retry once on non-fast-forward.
+            git push || (git pull --rebase origin "${GITHUB_REF_NAME}" && git push)
           fi
 
       - name: Upload Pages artifact
