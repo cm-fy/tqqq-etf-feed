@@ -2,8 +2,8 @@ name: Update TQQQ Feed
 
 on:
   schedule:
-    # Run every 15 minutes, every day
-    - cron: '*/15 * * * *'
+    # Run every 15 minutes, Monday through Friday only (mirror ocgn-stock-feed)
+    - cron: '*/15 * * * 1-5'
   workflow_dispatch: # Allow manual trigger
   push:
     branches:
@@ -38,17 +38,6 @@ jobs:
 
       - name: Fetch TQQQ data and generate feed
         run: python fetch_tqqq_feed.py
-
-      - name: Show generated feed info
-        run: |
-          echo "== Generated files =="
-          ls -la docs || true
-          echo "\n== Feed head =="
-          head -n 32 docs/feed.rss || true
-          echo "\n== lastBuildDate =="
-          grep -m1 "<lastBuildDate" docs/feed.rss || true
-          echo "\n== git status (before commit) =="
-          git status --porcelain -b || true
 
       - name: Commit and push if changed
         run: |
