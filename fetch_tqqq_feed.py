@@ -53,10 +53,47 @@ def fetch_tqqq_data():
 
         # Candle history is sometimes stale during extended hours; we can supplement with quote fields from `info`.
         hist = t.history(period="2d", interval="1m", prepost=True)
-        return info, hist
+
+        # Try to get the freshest price from fast_info and last 1m candle
+        fast_info = getattr(t, 'fast_info', {}) or {}
+        freshest = []
+        # 1. Yahoo quote fields
+        for k in [
+            ('preMarketPrice', 'preMarketTime'),
+            ('postMarketPrice', 'postMarketTime'),
+            ('regularMarketPrice', 'regularMarketTime'),
+        ]:
+            price = info.get(k[0])
+            ts = info.get(k[1])
+            if price is not None and ts is not None:
+                try:
+                    price_f = float(price)
+                    ts_i = int(ts)
+                    freshest.append(('quote', k[0], price_f, ts_i))
+                except Exception:
+                    pass
+        # 2. fast_info last_price
+        fi_price = fast_info.get('last_price')
+        fi_ts = None
+        if fi_price is not None:
+            # No timestamp, but use now
+            freshest.append(('fast_info', 'last_price', float(fi_price), int(dt.datetime.now(dt.timezone.utc).timestamp())))
+        # 3. Last 1m candle
+        if hist is not None and not hist.empty:
+            last_idx = hist.index[-1]
+            last_price = hist.iloc[-1]['Close'] if 'Close' in hist.columns else None
+            if last_price is not None:
+                freshest.append(('history', 'Close', float(last_price), int(last_idx.timestamp())))
+        # Sort by timestamp descending
+        freshest = sorted(freshest, key=lambda x: x[3], reverse=True)
+        # Print all sources for debug
+        print("FRESH_PRICE_SOURCES:")
+        for src in freshest:
+            print(f"  {src}")
+        return info, hist, freshest
     except Exception as e:
         print(f"Error fetching data: {e}")
-        return {}, pd.DataFrame()
+        return {}, pd.DataFrame(), []
 
 
 def pick_quote_price_and_time(info: dict):
@@ -109,6 +146,14 @@ def build_full_window_index(date_et: dt.date):
     return pd.date_range(start=start, end=end, freq=RESAMPLE_FREQ)
 
 
+def floor_to_5min(ts: dt.datetime) -> dt.datetime:
+    # Floor a timezone-aware datetime to the nearest lower 5-minute boundary.
+    if ts.tzinfo is None:
+        raise ValueError('floor_to_5min requires a timezone-aware datetime')
+    minute = (ts.minute // 5) * 5
+    return ts.replace(minute=minute, second=0, microsecond=0)
+
+
 def price_series_from_hist(hist_df: pd.DataFrame) -> pd.Series:
     if hist_df is None or hist_df.empty:
         return pd.Series(dtype=float)
@@ -128,37 +173,40 @@ def price_series_from_hist(hist_df: pd.DataFrame) -> pd.Series:
     return pd.Series(dtype=float)
 
 
-def generate_atom_and_rss(info, hist):
+def generate_atom_and_rss(info, hist, freshest):
     # Prepare price series
     price_series = price_series_from_hist(hist)
 
-    # Determine today's window first and then restrict price_series to it
+    # Determine today's window and restrict to <= now (avoid generating future timestamps)
     now_et = dt.datetime.now(ET_ZONE)
     target_date = now_et.date()
-    full_index = build_full_window_index(target_date)
+
+    window_start = dt.datetime.combine(target_date, dt.time(START_HOUR, 0), tzinfo=ET_ZONE)
+    window_end = dt.datetime.combine(target_date, dt.time(END_HOUR, 0), tzinfo=ET_ZONE)
+    effective_end = min(window_end, floor_to_5min(now_et))
+    if effective_end < window_start:
+        # Before the window starts: keep index empty so we don't emit misleading timestamps.
+        full_index = pd.DatetimeIndex([])
+    else:
+        full_index = pd.date_range(start=window_start, end=effective_end, freq=RESAMPLE_FREQ)
 
     # Discard historic data from previous days so we don't accidentally carry
     # yesterday's after-hours price into today's pre-market window.
     try:
-        start_of_window = full_index[0]
-        price_series = price_series[price_series.index >= start_of_window]
+        if len(full_index) > 0:
+            start_of_window = full_index[0]
+            price_series = price_series[price_series.index >= start_of_window]
     except Exception:
         pass
 
-    # If the candle history is stale (common in extended hours), supplement with
-    # the quote snapshot (preMarketPrice/regularMarketPrice) so the feed reflects
-    # the latest available Yahoo quote.
-    quote_price, quote_ts_utc, quote_src = pick_quote_price_and_time(info)
-    if quote_price is not None and quote_ts_utc is not None:
-        try:
-            quote_dt_et = dt.datetime.fromtimestamp(quote_ts_utc, tz=UTC).astimezone(ET_ZONE)
-            if quote_dt_et >= full_index[0]:
-                quote_point = pd.Series([quote_price], index=pd.DatetimeIndex([quote_dt_et]))
-                price_series = pd.concat([price_series, quote_point]).sort_index()
-                # De-duplicate identical timestamps, keeping the latest
-                price_series = price_series[~price_series.index.duplicated(keep='last')]
-        except Exception:
-            pass
+    # Always inject the freshest available price (from any source)
+    if freshest and len(full_index) > 0:
+        src, src_key, price, ts = freshest[0]
+        quote_dt_et = dt.datetime.fromtimestamp(ts, tz=UTC).astimezone(ET_ZONE)
+        if quote_dt_et >= full_index[0]:
+            quote_point = pd.Series([price], index=pd.DatetimeIndex([quote_dt_et]))
+            price_series = pd.concat([price_series, quote_point]).sort_index()
+            price_series = price_series[~price_series.index.duplicated(keep='last')]
 
     # For previous close, attempt to find last close prior to start of window
     previous_close = None
@@ -193,7 +241,9 @@ def generate_atom_and_rss(info, hist):
             price_5m = pd.Series(dtype=float)
 
     # Reindex price_5m to the full window (index in ET)
-    if not price_5m.empty:
+    if len(full_index) == 0:
+        price_5m = pd.Series(dtype=float)
+    elif not price_5m.empty:
         price_5m = price_5m.reindex(full_index, method='ffill')
     else:
         price_5m = pd.Series([None] * len(full_index), index=full_index)
@@ -231,15 +281,17 @@ def generate_atom_and_rss(info, hist):
 
     # Build a filtered list of timestamps where the price changed (avoid emitting long series of identical prices)
     emitted = []
-    last_price = None
+    emitted = []
+    last_price_rounded = None
     for ts in full_index:
         price = price_5m.get(ts, None)
         if price is None or pd.isna(price):
             continue
-        # Only emit when price changes compared to last emitted price
-        if last_price is None or price != last_price:
+        # Compare prices rounded to cents to avoid tiny float differences causing repeats
+        price_r = round(float(price), 2)
+        if last_price_rounded is None or price_r != last_price_rounded:
             emitted.append((ts, price))
-            last_price = price
+            last_price_rounded = price_r
 
     # Keep only the most recent MAX_RSS_ITEMS
     emitted = emitted[-MAX_RSS_ITEMS:]
@@ -253,7 +305,15 @@ def generate_atom_and_rss(info, hist):
     if EMIT_FALLBACK and len(emitted) <= 1:
         nonempty = [(ts, price_lookup.get(ts)) for ts in full_index if price_lookup.get(ts) is not None and not pd.isna(price_lookup.get(ts))]
         if len(nonempty) > 1:
-            emitted = nonempty[-MAX_RSS_ITEMS:]
+            # compress consecutive identical prices (rounded to cents) so readers don't get many identical items
+            compressed = []
+            last_r = None
+            for ts, p in nonempty:
+                pr = round(float(p), 2)
+                if last_r is None or pr != last_r:
+                    compressed.append((ts, p))
+                    last_r = pr
+            emitted = compressed[-MAX_RSS_ITEMS:]
 
     # Build Atom entries and RSS items from emitted list (newest-first in feed)
     for ts, price in reversed(emitted):
@@ -335,13 +395,17 @@ def generate_atom_and_rss(info, hist):
             if hi.index.tz is None:
                 hi = hi.tz_localize('UTC')
             last_hist_et = hi.index.max().tz_convert(ET_ZONE)
-        quote_dbg = None
-        if quote_price is not None and quote_ts_utc is not None:
-            quote_dbg = dt.datetime.fromtimestamp(int(quote_ts_utc), tz=UTC).astimezone(ET_ZONE)
+
+        freshest_dbg = None
+        if freshest:
+            src, src_key, price, ts = freshest[0]
+            freshest_dbg = f"{src}:{src_key}={price} @ {dt.datetime.fromtimestamp(int(ts), tz=UTC).astimezone(ET_ZONE)}"
+
         print(
             f"EMIT_FALLBACK={EMIT_FALLBACK}; EMITTED_COUNT={len(emitted)}; "
             f"MARKET_STATE={info.get('marketState')}; "
-            f"LAST_HIST={last_hist_et}; QUOTE_{quote_src}={quote_price} @ {quote_dbg}"
+            f"WINDOW_END={full_index[-1] if len(full_index) else None}; "
+            f"LAST_HIST={last_hist_et}; FRESHEST={freshest_dbg}"
         )
     except Exception:
         print(f"EMIT_FALLBACK={EMIT_FALLBACK}; EMITTED_COUNT={len(emitted)}")
@@ -401,9 +465,9 @@ def ensure_icon_is_deployed():
 def main():
     try:
         print("Fetching TQQQ data...")
-        info, hist = fetch_tqqq_data()
+        info, hist, freshest = fetch_tqqq_data()
         print("Generating Atom and RSS feeds...")
-        feed, rss_items, now_et = generate_atom_and_rss(info, hist)
+        feed, rss_items, now_et = generate_atom_and_rss(info, hist, freshest)
         print("Writing feed files...")
         feed_xml = prettify_xml(feed)
         os.makedirs('docs', exist_ok=True)
