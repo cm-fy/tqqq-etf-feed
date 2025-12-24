@@ -37,6 +37,9 @@ UTC = ZoneInfo('UTC')
 
 # RSS/Atom behavior
 MAX_RSS_ITEMS = 50  # limit RSS/Atom items emitted
+# Behavior flags (can be set via environment in the workflow)
+# Set EMIT_FALLBACK=0 to disable the fallback that emits full window when series is flat
+EMIT_FALLBACK = os.environ.get('EMIT_FALLBACK', '1').lower() in ('1', 'true', 'yes')
 
 
 def fetch_tqqq_data():
@@ -167,7 +170,7 @@ def generate_atom_and_rss(info, hist):
     # Fallback: if only one or zero emitted items but the full window contains
     # multiple non-NaN slots (flat market / holiday / pre-market), emit the
     # last MAX_RSS_ITEMS slots so readers still get a sensible feed.
-    if len(emitted) <= 1:
+    if EMIT_FALLBACK and len(emitted) <= 1:
         nonempty = [(ts, price_lookup.get(ts)) for ts in full_index if price_lookup.get(ts) is not None and not pd.isna(price_lookup.get(ts))]
         if len(nonempty) > 1:
             emitted = nonempty[-MAX_RSS_ITEMS:]
@@ -244,6 +247,8 @@ def generate_atom_and_rss(info, hist):
             'description': rss_desc
         })
 
+    # Print emitted count for workflow logs
+    print(f"EMIT_FALLBACK={EMIT_FALLBACK}; EMITTED_COUNT={len(emitted)}")
     return feed, rss_items, now_et
 
 
