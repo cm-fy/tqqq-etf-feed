@@ -1,25 +1,22 @@
 #!/usr/bin/env python3
 """
-Fetch TQQQ ETF data and generate an RSS2 feed at docs/feed.rss.
-This script is adapted from ocgn-stock-feed's fetch_stock_feed.py but only
-emits RSS2 (no Atom feed) and uses America/New_York timezone for timestamps.
+Fetch TQQQ ETF data and generate Atom (docs/feed.atom) and RSS2 (docs/feed.rss).
+This mirrors the ocgn-stock-feed implementation and behavior but targets the
+TQQQ ticker and uses ET (America/New_York) for timestamps and the trading window.
 """
 import os
 import shutil
 import datetime as dt
 from zoneinfo import ZoneInfo
-from email.utils import format_datetime
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
+from email.utils import format_datetime
 
 import yfinance as yf
 import pandas as pd
 
-# Atom namespace
-ATOM_NS = "http://www.w3.org/2005/Atom"
-ET.register_namespace('', ATOM_NS)
-
 # Configuration
+FEED_URL = "https://cm-fy.github.io/tqqq-etf-feed/feed.atom"
 FEED_RSS_URL = "https://cm-fy.github.io/tqqq-etf-feed/feed.rss"
 FEED_ICON = "https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png"
 FEED_HOMEPAGE = "https://cm-fy.github.io/tqqq-etf-feed/"
@@ -28,14 +25,18 @@ FEED_SUBTITLE = "Near-real-time TQQQ (ProShares UltraPro QQQ) price updates."
 FEED_AUTHOR = "TQQQ Feed Bot"
 SYMBOL = "TQQQ"
 
-# Window/resample parameters (ET)
+# Full-window parameters (ET)
 START_HOUR = 4
-END_HOUR = 21
-RESAMPLE_FREQ = "5T"
-MAX_RSS_ITEMS = 50
+END_HOUR = 21  # inclusive end at 21:00 ET
+RESAMPLE_FREQ = "5T"  # 5-minute buckets
+ATOM_NS = "http://www.w3.org/2005/Atom"
+ET.register_namespace('', ATOM_NS)
 
 ET_ZONE = ZoneInfo('America/New_York')
 UTC = ZoneInfo('UTC')
+
+# RSS/Atom behavior
+MAX_RSS_ITEMS = 50  # limit RSS/Atom items emitted
 
 
 def fetch_tqqq_data():
@@ -75,10 +76,10 @@ def price_series_from_hist(hist_df: pd.DataFrame) -> pd.Series:
 
 
 def generate_atom_and_rss(info, hist):
-    """Generate both Atom feed element and RSS items list (mirror ocgn-stock-feed behavior)."""
-    # Prepare price series and resample
+    # Prepare price series
     price_series = price_series_from_hist(hist)
 
+    # Resample to 5-minute using last available price in each bucket and forward-fill
     if not price_series.empty:
         price_5m = price_series.resample(RESAMPLE_FREQ).last().ffill()
     else:
@@ -88,12 +89,13 @@ def generate_atom_and_rss(info, hist):
     target_date = now_et.date()
     full_index = build_full_window_index(target_date)
 
+    # Reindex price_5m to the full window (index in ET)
     if not price_5m.empty:
         price_5m = price_5m.reindex(full_index, method='ffill')
     else:
         price_5m = pd.Series([None] * len(full_index), index=full_index)
 
-    # previous close
+    # For previous close, attempt to find last close prior to start of window
     previous_close = None
     try:
         if hist is not None and not hist.empty:
@@ -113,35 +115,21 @@ def generate_atom_and_rss(info, hist):
     except Exception:
         previous_close = None
 
-    # Decide timestamps to emit (price-changes only)
-    emitted = []
-    last_price = None
-    for ts in full_index:
-        price = price_5m.get(ts, None)
-        if price is None or pd.isna(price):
-            continue
-        if last_price is None or price != last_price:
-            emitted.append((ts, price))
-            last_price = price
-
-    emitted = emitted[-MAX_RSS_ITEMS:]
-    price_lookup = {ts: price_5m.get(ts, None) for ts in full_index}
-
-    # Build Atom feed element
+    # Build Atom feed
     feed = ET.Element(ET.QName(ATOM_NS, 'feed'))
     title = ET.SubElement(feed, ET.QName(ATOM_NS, 'title'))
     title.text = FEED_TITLE
     subtitle = ET.SubElement(feed, ET.QName(ATOM_NS, 'subtitle'))
     subtitle.text = FEED_SUBTITLE
     link_self = ET.SubElement(feed, ET.QName(ATOM_NS, 'link'))
-    link_self.set('href', FEED_RSS_URL.replace('feed.rss', 'feed.atom'))
+    link_self.set('href', FEED_URL)
     link_self.set('rel', 'self')
     link_alt = ET.SubElement(feed, ET.QName(ATOM_NS, 'link'))
     link_alt.set('href', FEED_HOMEPAGE)
     link_alt.set('rel', 'alternate')
     link_alt.set('type', 'text/html')
     feed_id = ET.SubElement(feed, ET.QName(ATOM_NS, 'id'))
-    feed_id.text = FEED_RSS_URL.replace('feed.rss', 'feed.atom')
+    feed_id.text = FEED_URL
     updated = ET.SubElement(feed, ET.QName(ATOM_NS, 'updated'))
     updated.text = now_et.isoformat()
     author = ET.SubElement(feed, ET.QName(ATOM_NS, 'author'))
@@ -154,10 +142,39 @@ def generate_atom_and_rss(info, hist):
     logo_el = ET.SubElement(feed, ET.QName(ATOM_NS, 'logo'))
     logo_el.text = FEED_ICON
 
+    # Build RSS channel items list
     rss_items = []
 
+
+    # Build a filtered list of timestamps where the price changed (avoid emitting long series of identical prices)
+    emitted = []
+    last_price = None
+    for ts in full_index:
+        price = price_5m.get(ts, None)
+        if price is None or pd.isna(price):
+            continue
+        # Only emit when price changes compared to last emitted price
+        if last_price is None or price != last_price:
+            emitted.append((ts, price))
+            last_price = price
+
+    # Keep only the most recent MAX_RSS_ITEMS
+    emitted = emitted[-MAX_RSS_ITEMS:]
+
+    # Precompute a mapping from timestamp to price for quick lookup
+    price_lookup = {ts: price_5m.get(ts, None) for ts in full_index}
+
+    # Fallback: if only one or zero emitted items but the full window contains
+    # multiple non-NaN slots (flat market / holiday / pre-market), emit the
+    # last MAX_RSS_ITEMS slots so readers still get a sensible feed.
+    if len(emitted) <= 1:
+        nonempty = [(ts, price_lookup.get(ts)) for ts in full_index if price_lookup.get(ts) is not None and not pd.isna(price_lookup.get(ts))]
+        if len(nonempty) > 1:
+            emitted = nonempty[-MAX_RSS_ITEMS:]
+
+    # Build Atom entries and RSS items from emitted list (newest-first in feed)
     for ts, price in reversed(emitted):
-        # Atom entry
+        # --- Atom entry (unchanged) ---
         entry = ET.SubElement(feed, ET.QName(ATOM_NS, 'entry'))
         title_entry = ET.SubElement(entry, ET.QName(ATOM_NS, 'title'))
         price_text = f"{SYMBOL}: ${price:.2f}"
@@ -168,6 +185,7 @@ def generate_atom_and_rss(info, hist):
         link.set('type', 'text/html')
         entry_id = ET.SubElement(entry, ET.QName(ATOM_NS, 'id'))
         entry_id.text = f"{SYMBOL.lower()}-{ts.strftime('%Y%m%d-%H%M')}"
+        # published/updated in ET
         published = ET.SubElement(entry, ET.QName(ATOM_NS, 'published'))
         published.text = ts.isoformat()
         entry_updated = ET.SubElement(entry, ET.QName(ATOM_NS, 'updated'))
@@ -185,7 +203,7 @@ def generate_atom_and_rss(info, hist):
         content = ET.SubElement(entry, ET.QName(ATOM_NS, 'content'))
         content.set('type', 'html')
         content_html = "<div>\n"
-        content_html += f"<h2>{SYMBOL} Price Update</h2>\n"
+        content_html += f"<h2>{SYMBOL} Stock Price Update</h2>\n"
         content_html += f"<p><strong>Price:</strong> ${price:.2f}</p>\n"
         if previous_close is not None:
             content_html += f"<p><strong>Previous Close:</strong> ${previous_close:.2f}</p>\n"
@@ -193,22 +211,31 @@ def generate_atom_and_rss(info, hist):
         content_html += "</div>"
         content.text = content_html
 
-        # RSS item
+        # --- RSS item (add 1h diff) ---
         pubdate_et = ts.astimezone(ET_ZONE)
+
+        # Find price from 1 hour ago (if available)
         ts_1h_ago = ts - pd.Timedelta(hours=1)
         price_1h_ago = None
+        # Find the closest earlier or equal timestamp in full_index
         idxs = [i for i, t in enumerate(full_index) if t <= ts_1h_ago]
         if idxs:
             ts_prev = full_index[max(idxs)]
             price_1h_ago = price_lookup.get(ts_prev, None)
+        # Compute diff and percent
         diff_str = ""
         if price_1h_ago is not None and not pd.isna(price_1h_ago):
             diff = price - price_1h_ago
             pct = (diff / price_1h_ago * 100) if price_1h_ago else 0
             diff_str = f" ({diff:+.2f}, {pct:+.2f}% vs 1h ago)"
+
+        # Add published time to title for clarity
         published_str = ts.strftime('%H:%M %Z')
         rss_title = f"{SYMBOL}: ${price:.2f}{diff_str} [{published_str}]"
+
+        # Add published time to description as well
         rss_desc = content_html + f"<br/><small>Published: {published_str}</small>"
+
         rss_items.append({
             'title': rss_title,
             'link': f"https://finance.yahoo.com/quote/{SYMBOL}",
@@ -265,7 +292,7 @@ def ensure_icon_is_deployed():
             shutil.copyfile(src, dst)
             print(f"Copied {src} -> {dst} so it will be deployed to Pages")
         else:
-            print(f"Note: {src} not found in repo root; skipping copy. Add TQQQ.png at repo root or put the image in docs/ if you want an icon.")
+            print(f"Note: {src} not found in repo root; skipping copy. If you want an icon, add TQQQ.png at repo root or put the image in docs/.")
     except Exception as e:
         print(f"Warning: could not copy icon file: {e}")
 
@@ -274,16 +301,14 @@ def main():
     try:
         print("Fetching TQQQ data...")
         info, hist = fetch_tqqq_data()
-        # Generate both Atom and RSS like ocgn-stock-feed
+        print("Generating Atom and RSS feeds...")
         feed, rss_items, now_et = generate_atom_and_rss(info, hist)
         print("Writing feed files...")
+        feed_xml = prettify_xml(feed)
         os.makedirs('docs', exist_ok=True)
         ensure_icon_is_deployed()
-        # Atom
-        feed_xml = prettify_xml(feed)
         with open('docs/feed.atom', 'w', encoding='utf-8') as f:
             f.write(feed_xml)
-        # RSS
         rss_text = write_rss(rss_items, now_et)
         with open('docs/feed.rss', 'w', encoding='utf-8') as f:
             f.write(rss_text)
