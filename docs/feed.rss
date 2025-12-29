@@ -4,17 +4,41 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Mon, 29 Dec 2025 07:10:44 -0500</lastBuildDate>
+<lastBuildDate>Mon, 29 Dec 2025 07:28:35 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $54.66 (+0.13, +0.24% vs 1h ago) [07:10 EST]]]></title>
+<title><![CDATA[TQQQ: $54.69 (+0.15, +0.28% vs 1h ago) [07:25 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20251229-0725</guid>
+<pubDate>Mon, 29 Dec 2025 07:25:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.69</p>
+<p><strong>Previous Close:</strong> $55.08</p>
+<p><strong>Timestamp (ET):</strong> 2025-12-29 07:25 EST</p>
+</div><br/><small>Published: 07:25 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $54.71 (+0.23, +0.42% vs 1h ago) [07:20 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20251229-0720</guid>
+<pubDate>Mon, 29 Dec 2025 07:20:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.71</p>
+<p><strong>Previous Close:</strong> $55.08</p>
+<p><strong>Timestamp (ET):</strong> 2025-12-29 07:20 EST</p>
+</div><br/><small>Published: 07:20 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $54.67 (+0.14, +0.26% vs 1h ago) [07:10 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
 <guid>tqqq-20251229-0710</guid>
 <pubDate>Mon, 29 Dec 2025 07:10:00 -0500</pubDate>
 <description><![CDATA[<div>
 <h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $54.66</p>
+<p><strong>Price:</strong> $54.67</p>
 <p><strong>Previous Close:</strong> $55.08</p>
 <p><strong>Timestamp (ET):</strong> 2025-12-29 07:10 EST</p>
 </div><br/><small>Published: 07:10 EST</small>]]></description>
