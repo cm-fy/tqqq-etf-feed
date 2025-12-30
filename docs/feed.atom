@@ -5,7 +5,7 @@
   <link href="https://cm-fy.github.io/tqqq-etf-feed/feed.atom" rel="self"/>
   <link href="https://cm-fy.github.io/tqqq-etf-feed/" rel="alternate" type="text/html"/>
   <id>https://cm-fy.github.io/tqqq-etf-feed/feed.atom</id>
-  <updated>2025-12-30T10:44:16.009905-05:00</updated>
+  <updated>2025-12-30T10:54:23-05:00</updated>
   <author>
     <name>TQQQ Feed Bot</name>
   </author>
@@ -13,7 +13,41 @@
   <icon>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</icon>
   <logo>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</logo>
   <entry>
-    <title>TQQQ: $54.17</title>
+    <title>TQQQ: $54.45</title>
+    <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
+    <id>tqqq-20251230-1050</id>
+    <published>2025-12-30T10:50:00-05:00</published>
+    <updated>2025-12-30T10:50:00-05:00</updated>
+    <author>
+      <name>TQQQ Feed Bot</name>
+    </author>
+    <summary>TQQQ 54.45 (+0.20, +0.38%) at 10:50 EST</summary>
+    <content type="html">&lt;div&gt;
+&lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.45&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $54.25&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2025-12-30 10:50 EST&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>TQQQ: $54.32</title>
+    <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
+    <id>tqqq-20251230-1045</id>
+    <published>2025-12-30T10:45:00-05:00</published>
+    <updated>2025-12-30T10:45:00-05:00</updated>
+    <author>
+      <name>TQQQ Feed Bot</name>
+    </author>
+    <summary>TQQQ 54.32 (+0.07, +0.12%) at 10:45 EST</summary>
+    <content type="html">&lt;div&gt;
+&lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.32&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $54.25&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2025-12-30 10:45 EST&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>TQQQ: $54.20</title>
     <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
     <id>tqqq-20251230-1040</id>
     <published>2025-12-30T10:40:00-05:00</published>
@@ -21,10 +55,10 @@
     <author>
       <name>TQQQ Feed Bot</name>
     </author>
-    <summary>TQQQ 54.17 (-0.08, -0.14%) at 10:40 EST</summary>
+    <summary>TQQQ 54.20 (-0.05, -0.09%) at 10:40 EST</summary>
     <content type="html">&lt;div&gt;
 &lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.17&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.20&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $54.25&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2025-12-30 10:40 EST&lt;/p&gt;
 &lt;/div&gt;</content>
@@ -826,40 +860,6 @@
 &lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.31&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $54.25&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2025-12-30 06:30 EST&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>TQQQ: $54.30</title>
-    <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
-    <id>tqqq-20251230-0625</id>
-    <published>2025-12-30T06:25:00-05:00</published>
-    <updated>2025-12-30T06:25:00-05:00</updated>
-    <author>
-      <name>TQQQ Feed Bot</name>
-    </author>
-    <summary>TQQQ 54.30 (+0.05, +0.09%) at 06:25 EST</summary>
-    <content type="html">&lt;div&gt;
-&lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.30&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $54.25&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2025-12-30 06:25 EST&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>TQQQ: $54.36</title>
-    <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
-    <id>tqqq-20251230-0620</id>
-    <published>2025-12-30T06:20:00-05:00</published>
-    <updated>2025-12-30T06:20:00-05:00</updated>
-    <author>
-      <name>TQQQ Feed Bot</name>
-    </author>
-    <summary>TQQQ 54.36 (+0.11, +0.20%) at 06:20 EST</summary>
-    <content type="html">&lt;div&gt;
-&lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $54.36&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $54.25&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2025-12-30 06:20 EST&lt;/p&gt;
 &lt;/div&gt;</content>
   </entry>
 </feed>
