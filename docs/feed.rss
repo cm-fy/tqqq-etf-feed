@@ -4,11 +4,23 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Fri, 02 Jan 2026 17:44:35 -0500</lastBuildDate>
+<lastBuildDate>Fri, 02 Jan 2026 17:54:30 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $52.38 (-0.06, -0.11% vs 1h ago) [17:40 EST]]]></title>
+<title><![CDATA[TQQQ: $52.37 (-0.02, -0.04% vs 1h ago) [17:45 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260102-1745</guid>
+<pubDate>Fri, 02 Jan 2026 17:45:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $52.37</p>
+<p><strong>Previous Close:</strong> $52.71</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-02 17:45 EST</p>
+</div><br/><small>Published: 17:45 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $52.38 (-0.05, -0.10% vs 1h ago) [17:40 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
 <guid>tqqq-20260102-1740</guid>
 <pubDate>Fri, 02 Jan 2026 17:40:00 -0500</pubDate>
@@ -594,18 +606,6 @@
 <p><strong>Previous Close:</strong> $52.71</p>
 <p><strong>Timestamp (ET):</strong> 2026-01-02 13:05 EST</p>
 </div><br/><small>Published: 13:05 EST</small>]]></description>
-</item>
-<item>
-<title><![CDATA[TQQQ: $52.09 (+0.12, +0.23% vs 1h ago) [13:00 EST]]]></title>
-<link>https://finance.yahoo.com/quote/TQQQ</link>
-<guid>tqqq-20260102-1300</guid>
-<pubDate>Fri, 02 Jan 2026 13:00:00 -0500</pubDate>
-<description><![CDATA[<div>
-<h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $52.09</p>
-<p><strong>Previous Close:</strong> $52.71</p>
-<p><strong>Timestamp (ET):</strong> 2026-01-02 13:00 EST</p>
-</div><br/><small>Published: 13:00 EST</small>]]></description>
 </item>
 </channel>
 </rss>
