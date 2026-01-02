@@ -4,9 +4,45 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Fri, 02 Jan 2026 06:19:45 -0500</lastBuildDate>
+<lastBuildDate>Fri, 02 Jan 2026 06:31:32 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
+<item>
+<title><![CDATA[TQQQ: $54.38 (+0.07, +0.13% vs 1h ago) [06:30 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260102-0630</guid>
+<pubDate>Fri, 02 Jan 2026 06:30:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.38</p>
+<p><strong>Previous Close:</strong> $52.71</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-02 06:30 EST</p>
+</div><br/><small>Published: 06:30 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $54.35 (+0.00, +0.00% vs 1h ago) [06:25 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260102-0625</guid>
+<pubDate>Fri, 02 Jan 2026 06:25:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.35</p>
+<p><strong>Previous Close:</strong> $52.71</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-02 06:25 EST</p>
+</div><br/><small>Published: 06:25 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $54.38 (+0.02, +0.04% vs 1h ago) [06:20 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260102-0620</guid>
+<pubDate>Fri, 02 Jan 2026 06:20:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.38</p>
+<p><strong>Previous Close:</strong> $52.71</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-02 06:20 EST</p>
+</div><br/><small>Published: 06:20 EST</small>]]></description>
+</item>
 <item>
 <title><![CDATA[TQQQ: $54.40 (-0.03, -0.06% vs 1h ago) [06:15 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
