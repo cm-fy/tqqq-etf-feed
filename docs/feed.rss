@@ -4,9 +4,33 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Fri, 02 Jan 2026 05:15:55 -0500</lastBuildDate>
+<lastBuildDate>Fri, 02 Jan 2026 05:32:32 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
+<item>
+<title><![CDATA[TQQQ: $54.35 (-0.10, -0.18% vs 1h ago) [05:25 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260102-0525</guid>
+<pubDate>Fri, 02 Jan 2026 05:25:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.35</p>
+<p><strong>Previous Close:</strong> $52.71</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-02 05:25 EST</p>
+</div><br/><small>Published: 05:25 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $54.36 (+0.00, +0.00% vs 1h ago) [05:20 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260102-0520</guid>
+<pubDate>Fri, 02 Jan 2026 05:20:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $54.36</p>
+<p><strong>Previous Close:</strong> $52.71</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-02 05:20 EST</p>
+</div><br/><small>Published: 05:20 EST</small>]]></description>
+</item>
 <item>
 <title><![CDATA[TQQQ: $54.43 (+0.02, +0.04% vs 1h ago) [05:15 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
