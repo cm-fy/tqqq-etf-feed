@@ -4,11 +4,47 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Mon, 12 Jan 2026 12:02:14 -0500</lastBuildDate>
+<lastBuildDate>Mon, 12 Jan 2026 12:16:33 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $55.99 (+0.33, +0.59% vs 1h ago) [12:00 EST]]]></title>
+<title><![CDATA[TQQQ: $55.98 (+0.09, +0.15% vs 1h ago) [12:15 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260112-1215</guid>
+<pubDate>Mon, 12 Jan 2026 12:15:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.98</p>
+<p><strong>Previous Close:</strong> $55.94</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-12 12:15 EST</p>
+</div><br/><small>Published: 12:15 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $56.01 (+0.14, +0.25% vs 1h ago) [12:10 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260112-1210</guid>
+<pubDate>Mon, 12 Jan 2026 12:10:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $56.01</p>
+<p><strong>Previous Close:</strong> $55.94</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-12 12:10 EST</p>
+</div><br/><small>Published: 12:10 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.91 (+0.18, +0.32% vs 1h ago) [12:05 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260112-1205</guid>
+<pubDate>Mon, 12 Jan 2026 12:05:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.91</p>
+<p><strong>Previous Close:</strong> $55.94</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-12 12:05 EST</p>
+</div><br/><small>Published: 12:05 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.99 (+0.32, +0.58% vs 1h ago) [12:00 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
 <guid>tqqq-20260112-1200</guid>
 <pubDate>Mon, 12 Jan 2026 12:00:00 -0500</pubDate>
@@ -570,42 +606,6 @@
 <p><strong>Previous Close:</strong> $55.94</p>
 <p><strong>Timestamp (ET):</strong> 2026-01-12 07:55 EST</p>
 </div><br/><small>Published: 07:55 EST</small>]]></description>
-</item>
-<item>
-<title><![CDATA[TQQQ: $54.67 (+0.28, +0.51% vs 1h ago) [07:50 EST]]]></title>
-<link>https://finance.yahoo.com/quote/TQQQ</link>
-<guid>tqqq-20260112-0750</guid>
-<pubDate>Mon, 12 Jan 2026 07:50:00 -0500</pubDate>
-<description><![CDATA[<div>
-<h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $54.67</p>
-<p><strong>Previous Close:</strong> $55.94</p>
-<p><strong>Timestamp (ET):</strong> 2026-01-12 07:50 EST</p>
-</div><br/><small>Published: 07:50 EST</small>]]></description>
-</item>
-<item>
-<title><![CDATA[TQQQ: $54.60 (+0.22, +0.40% vs 1h ago) [07:45 EST]]]></title>
-<link>https://finance.yahoo.com/quote/TQQQ</link>
-<guid>tqqq-20260112-0745</guid>
-<pubDate>Mon, 12 Jan 2026 07:45:00 -0500</pubDate>
-<description><![CDATA[<div>
-<h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $54.60</p>
-<p><strong>Previous Close:</strong> $55.94</p>
-<p><strong>Timestamp (ET):</strong> 2026-01-12 07:45 EST</p>
-</div><br/><small>Published: 07:45 EST</small>]]></description>
-</item>
-<item>
-<title><![CDATA[TQQQ: $54.57 (+0.17, +0.31% vs 1h ago) [07:40 EST]]]></title>
-<link>https://finance.yahoo.com/quote/TQQQ</link>
-<guid>tqqq-20260112-0740</guid>
-<pubDate>Mon, 12 Jan 2026 07:40:00 -0500</pubDate>
-<description><![CDATA[<div>
-<h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $54.57</p>
-<p><strong>Previous Close:</strong> $55.94</p>
-<p><strong>Timestamp (ET):</strong> 2026-01-12 07:40 EST</p>
-</div><br/><small>Published: 07:40 EST</small>]]></description>
 </item>
 </channel>
 </rss>
