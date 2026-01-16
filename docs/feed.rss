@@ -4,9 +4,45 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Fri, 16 Jan 2026 04:13:10 -0500</lastBuildDate>
+<lastBuildDate>Fri, 16 Jan 2026 04:30:00 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
+<item>
+<title><![CDATA[TQQQ: $55.15 [04:25 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260116-0425</guid>
+<pubDate>Fri, 16 Jan 2026 04:25:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.15</p>
+<p><strong>Previous Close:</strong> $54.62</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-16 04:25 EST</p>
+</div><br/><small>Published: 04:25 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.08 [04:20 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260116-0420</guid>
+<pubDate>Fri, 16 Jan 2026 04:20:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.08</p>
+<p><strong>Previous Close:</strong> $54.62</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-16 04:20 EST</p>
+</div><br/><small>Published: 04:20 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.05 [04:15 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260116-0415</guid>
+<pubDate>Fri, 16 Jan 2026 04:15:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.05</p>
+<p><strong>Previous Close:</strong> $54.62</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-16 04:15 EST</p>
+</div><br/><small>Published: 04:15 EST</small>]]></description>
+</item>
 <item>
 <title><![CDATA[TQQQ: $55.13 [04:10 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
