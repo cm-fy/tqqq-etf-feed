@@ -185,8 +185,10 @@ def generate_atom_and_rss(info, hist, freshest):
     window_end = dt.datetime.combine(target_date, dt.time(END_HOUR, 0), tzinfo=ET_ZONE)
     effective_end = min(window_end, floor_to_5min(now_et))
     if effective_end < window_start:
-        # Before the window starts: keep index empty so we don't emit misleading timestamps.
-        full_index = pd.DatetimeIndex([])
+        # Before the trading window starts: build the full window so the
+        # previous-close fallback can populate the feed for pre-market readers
+        # (otherwise full_index is empty and no items are emitted).
+        full_index = pd.date_range(start=window_start, end=window_end, freq=RESAMPLE_FREQ)
     else:
         full_index = pd.date_range(start=window_start, end=effective_end, freq=RESAMPLE_FREQ)
 
