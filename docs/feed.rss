@@ -4,17 +4,89 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Fri, 30 Jan 2026 07:44:52 -0500</lastBuildDate>
+<lastBuildDate>Fri, 30 Jan 2026 08:16:07 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $55.13 (+0.14, +0.25% vs 1h ago) [07:40 EST]]]></title>
+<title><![CDATA[TQQQ: $55.30 (+0.06, +0.11% vs 1h ago) [08:15 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260130-0815</guid>
+<pubDate>Fri, 30 Jan 2026 08:15:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.30</p>
+<p><strong>Previous Close:</strong> $55.61</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-30 08:15 EST</p>
+</div><br/><small>Published: 08:15 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.31 (+0.03, +0.06% vs 1h ago) [08:10 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260130-0810</guid>
+<pubDate>Fri, 30 Jan 2026 08:10:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.31</p>
+<p><strong>Previous Close:</strong> $55.61</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-30 08:10 EST</p>
+</div><br/><small>Published: 08:10 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.21 (-0.24, -0.43% vs 1h ago) [08:00 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260130-0800</guid>
+<pubDate>Fri, 30 Jan 2026 08:00:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.21</p>
+<p><strong>Previous Close:</strong> $55.61</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-30 08:00 EST</p>
+</div><br/><small>Published: 08:00 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.11 (-0.17, -0.31% vs 1h ago) [07:55 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260130-0755</guid>
+<pubDate>Fri, 30 Jan 2026 07:55:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.11</p>
+<p><strong>Previous Close:</strong> $55.61</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-30 07:55 EST</p>
+</div><br/><small>Published: 07:55 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.00 (-0.26, -0.47% vs 1h ago) [07:50 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260130-0750</guid>
+<pubDate>Fri, 30 Jan 2026 07:50:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.00</p>
+<p><strong>Previous Close:</strong> $55.61</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-30 07:50 EST</p>
+</div><br/><small>Published: 07:50 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.15 (+0.36, +0.66% vs 1h ago) [07:45 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260130-0745</guid>
+<pubDate>Fri, 30 Jan 2026 07:45:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $55.15</p>
+<p><strong>Previous Close:</strong> $55.61</p>
+<p><strong>Timestamp (ET):</strong> 2026-01-30 07:45 EST</p>
+</div><br/><small>Published: 07:45 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $55.14 (+0.15, +0.27% vs 1h ago) [07:40 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
 <guid>tqqq-20260130-0740</guid>
 <pubDate>Fri, 30 Jan 2026 07:40:00 -0500</pubDate>
 <description><![CDATA[<div>
 <h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $55.13</p>
+<p><strong>Price:</strong> $55.14</p>
 <p><strong>Previous Close:</strong> $55.61</p>
 <p><strong>Timestamp (ET):</strong> 2026-01-30 07:40 EST</p>
 </div><br/><small>Published: 07:40 EST</small>]]></description>
