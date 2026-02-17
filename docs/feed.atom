@@ -5,7 +5,7 @@
   <link href="https://cm-fy.github.io/tqqq-etf-feed/feed.atom" rel="self"/>
   <link href="https://cm-fy.github.io/tqqq-etf-feed/" rel="alternate" type="text/html"/>
   <id>https://cm-fy.github.io/tqqq-etf-feed/feed.atom</id>
-  <updated>2026-02-17T17:27:53.381280-05:00</updated>
+  <updated>2026-02-17T17:48:53.179629-05:00</updated>
   <author>
     <name>TQQQ Feed Bot</name>
   </author>
@@ -13,20 +13,37 @@
   <icon>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</icon>
   <logo>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</logo>
   <entry>
-    <title>TQQQ: $48.32</title>
+    <title>TQQQ: $48.33</title>
     <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
-    <id>tqqq-20260217-1725</id>
-    <published>2026-02-17T17:25:00-05:00</published>
-    <updated>2026-02-17T17:25:00-05:00</updated>
+    <id>tqqq-20260217-1740</id>
+    <published>2026-02-17T17:40:00-05:00</published>
+    <updated>2026-02-17T17:40:00-05:00</updated>
     <author>
       <name>TQQQ Feed Bot</name>
     </author>
-    <summary>TQQQ 48.32 (+0.22, +0.46%) at 17:25 EST</summary>
+    <summary>TQQQ 48.33 (+0.23, +0.48%) at 17:40 EST</summary>
     <content type="html">&lt;div&gt;
 &lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $48.32&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $48.33&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $48.10&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2026-02-17 17:25 EST&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2026-02-17 17:40 EST&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>TQQQ: $48.30</title>
+    <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
+    <id>tqqq-20260217-1730</id>
+    <published>2026-02-17T17:30:00-05:00</published>
+    <updated>2026-02-17T17:30:00-05:00</updated>
+    <author>
+      <name>TQQQ Feed Bot</name>
+    </author>
+    <summary>TQQQ 48.30 (+0.20, +0.42%) at 17:30 EST</summary>
+    <content type="html">&lt;div&gt;
+&lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $48.30&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $48.10&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2026-02-17 17:30 EST&lt;/p&gt;
 &lt;/div&gt;</content>
   </entry>
   <entry>
@@ -843,23 +860,6 @@
 &lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $48.28&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $48.10&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2026-02-17 13:20 EST&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>TQQQ: $47.71</title>
-    <link href="https://finance.yahoo.com/quote/TQQQ" rel="alternate" type="text/html"/>
-    <id>tqqq-20260217-1315</id>
-    <published>2026-02-17T13:15:00-05:00</published>
-    <updated>2026-02-17T13:15:00-05:00</updated>
-    <author>
-      <name>TQQQ Feed Bot</name>
-    </author>
-    <summary>TQQQ 47.71 (-0.39, -0.81%) at 13:15 EST</summary>
-    <content type="html">&lt;div&gt;
-&lt;h2&gt;TQQQ Stock Price Update&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Price:&lt;/strong&gt; $47.71&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Close:&lt;/strong&gt; $48.10&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Timestamp (ET):&lt;/strong&gt; 2026-02-17 13:15 EST&lt;/p&gt;
 &lt;/div&gt;</content>
   </entry>
 </feed>
