@@ -4,17 +4,41 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Thu, 19 Feb 2026 06:41:40 -0500</lastBuildDate>
+<lastBuildDate>Thu, 19 Feb 2026 06:59:16 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $48.88 (+0.07, +0.14% vs 1h ago) [06:40 EST]]]></title>
+<title><![CDATA[TQQQ: $48.90 (+0.13, +0.27% vs 1h ago) [06:55 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260219-0655</guid>
+<pubDate>Thu, 19 Feb 2026 06:55:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $48.90</p>
+<p><strong>Previous Close:</strong> $49.32</p>
+<p><strong>Timestamp (ET):</strong> 2026-02-19 06:55 EST</p>
+</div><br/><small>Published: 06:55 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $48.87 (+0.15, +0.31% vs 1h ago) [06:50 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260219-0650</guid>
+<pubDate>Thu, 19 Feb 2026 06:50:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $48.87</p>
+<p><strong>Previous Close:</strong> $49.32</p>
+<p><strong>Timestamp (ET):</strong> 2026-02-19 06:50 EST</p>
+</div><br/><small>Published: 06:50 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $48.86 (+0.05, +0.10% vs 1h ago) [06:40 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
 <guid>tqqq-20260219-0640</guid>
 <pubDate>Thu, 19 Feb 2026 06:40:00 -0500</pubDate>
 <description><![CDATA[<div>
 <h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $48.88</p>
+<p><strong>Price:</strong> $48.86</p>
 <p><strong>Previous Close:</strong> $49.32</p>
 <p><strong>Timestamp (ET):</strong> 2026-02-19 06:40 EST</p>
 </div><br/><small>Published: 06:40 EST</small>]]></description>
