@@ -4,9 +4,57 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Thu, 05 Mar 2026 04:25:29 -0500</lastBuildDate>
+<lastBuildDate>Thu, 05 Mar 2026 04:48:25 -0500</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
+<item>
+<title><![CDATA[TQQQ: $50.16 [04:45 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260305-0445</guid>
+<pubDate>Thu, 05 Mar 2026 04:45:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $50.16</p>
+<p><strong>Previous Close:</strong> $50.76</p>
+<p><strong>Timestamp (ET):</strong> 2026-03-05 04:45 EST</p>
+</div><br/><small>Published: 04:45 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $50.09 [04:35 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260305-0435</guid>
+<pubDate>Thu, 05 Mar 2026 04:35:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $50.09</p>
+<p><strong>Previous Close:</strong> $50.76</p>
+<p><strong>Timestamp (ET):</strong> 2026-03-05 04:35 EST</p>
+</div><br/><small>Published: 04:35 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $50.35 [04:30 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260305-0430</guid>
+<pubDate>Thu, 05 Mar 2026 04:30:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $50.35</p>
+<p><strong>Previous Close:</strong> $50.76</p>
+<p><strong>Timestamp (ET):</strong> 2026-03-05 04:30 EST</p>
+</div><br/><small>Published: 04:30 EST</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $50.30 [04:25 EST]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260305-0425</guid>
+<pubDate>Thu, 05 Mar 2026 04:25:00 -0500</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $50.30</p>
+<p><strong>Previous Close:</strong> $50.76</p>
+<p><strong>Timestamp (ET):</strong> 2026-03-05 04:25 EST</p>
+</div><br/><small>Published: 04:25 EST</small>]]></description>
+</item>
 <item>
 <title><![CDATA[TQQQ: $50.52 [04:20 EST]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
