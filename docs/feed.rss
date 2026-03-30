@@ -4,17 +4,41 @@
 <title>TQQQ ETF Price Feed</title>
 <link>https://cm-fy.github.io/tqqq-etf-feed/</link>
 <description>Near-real-time TQQQ (ProShares UltraPro QQQ) price updates.</description>
-<lastBuildDate>Mon, 30 Mar 2026 03:41:22 -0400</lastBuildDate>
+<lastBuildDate>Mon, 30 Mar 2026 04:14:43 -0400</lastBuildDate>
 <generator>fetch_tqqq_feed.py (custom)</generator>
 <image><url>https://cm-fy.github.io/tqqq-etf-feed/TQQQ.png</url><title>TQQQ ETF Price Feed</title><link>https://cm-fy.github.io/tqqq-etf-feed/</link></image>
 <item>
-<title><![CDATA[TQQQ: $38.20 [04:00 EDT]]]></title>
+<title><![CDATA[TQQQ: $39.34 [04:10 EDT]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260330-0410</guid>
+<pubDate>Mon, 30 Mar 2026 04:10:00 -0400</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $39.34</p>
+<p><strong>Previous Close:</strong> $38.20</p>
+<p><strong>Timestamp (ET):</strong> 2026-03-30 04:10 EDT</p>
+</div><br/><small>Published: 04:10 EDT</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $39.26 [04:05 EDT]]]></title>
+<link>https://finance.yahoo.com/quote/TQQQ</link>
+<guid>tqqq-20260330-0405</guid>
+<pubDate>Mon, 30 Mar 2026 04:05:00 -0400</pubDate>
+<description><![CDATA[<div>
+<h2>TQQQ Stock Price Update</h2>
+<p><strong>Price:</strong> $39.26</p>
+<p><strong>Previous Close:</strong> $38.20</p>
+<p><strong>Timestamp (ET):</strong> 2026-03-30 04:05 EDT</p>
+</div><br/><small>Published: 04:05 EDT</small>]]></description>
+</item>
+<item>
+<title><![CDATA[TQQQ: $39.23 [04:00 EDT]]]></title>
 <link>https://finance.yahoo.com/quote/TQQQ</link>
 <guid>tqqq-20260330-0400</guid>
 <pubDate>Mon, 30 Mar 2026 04:00:00 -0400</pubDate>
 <description><![CDATA[<div>
 <h2>TQQQ Stock Price Update</h2>
-<p><strong>Price:</strong> $38.20</p>
+<p><strong>Price:</strong> $39.23</p>
 <p><strong>Previous Close:</strong> $38.20</p>
 <p><strong>Timestamp (ET):</strong> 2026-03-30 04:00 EDT</p>
 </div><br/><small>Published: 04:00 EDT</small>]]></description>
